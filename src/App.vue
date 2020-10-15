@@ -1,27 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <Header :started="started" :clickHandler="getStarted" />
+  <InsuranceSteps v-if="started" :msg="msg" />
+  <StartScreen v-else :clickHandler="getStarted" />
+  <NavFooter v-if="started" :currentStep="currentStep" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import StartScreen from "./components/StartScreen.vue";
+import InsuranceSteps from "./components/InsuranceSteps.vue";
+import Header from "./components/Header.vue";
+import NavFooter from "./components/NavFooter.vue";
 
 export default defineComponent({
   name: "App",
+  data() {
+    return {
+      started: false,
+      currentStep: 0
+    };
+  },
   components: {
-    HelloWorld
+    StartScreen,
+    InsuranceSteps,
+    Header,
+    NavFooter
+  },
+  methods: {
+    getStarted() {
+      this.started = !this.started;
+      this.currentStep = 1;
+    }
   }
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 82px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 </style>
