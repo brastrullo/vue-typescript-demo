@@ -1,23 +1,22 @@
 <template>
   <Header :started="started" :clickHandler="getStarted" />
   <transition name="pageslide">
-    <InsuranceSteps
+    <InsuranceStepsScreen
       v-if="started"
-      :stepData="stepData"
-      :buttonHandler="setStepData"
-      :currentStep="currentStep"
+      :current-step="currentStep"
+      :update-step="updateStep"
     />
-    <StartScreen v-else :clickHandler="getStarted" />
+    <StartScreen v-else :click-handler="getStarted" />
   </transition>
   <transition name="navslide">
-    <NavFooter v-if="started" :currentStep="currentStep" />
+    <NavFooter v-if="started" :current-step="currentStep" />
   </transition>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import StartScreen from "./components/StartScreen.vue";
-import InsuranceSteps from "./components/InsuranceSteps.vue";
+import InsuranceStepsScreen from "./components/InsuranceStepsScreen.vue";
 import Header from "./components/Header.vue";
 import NavFooter from "./components/NavFooter.vue";
 
@@ -32,21 +31,12 @@ export default defineComponent({
   data() {
     return {
       started: false,
-      currentStep: 0,
-      stepData: [
-        { step: 1, name: "insurance", value: "" },
-        { step: 2, name: "business", value: "" },
-        { step: 3, name: "phone", value: "" },
-        { step: 4, name: "state", value: "" },
-        { step: 5, name: "design", value: "" },
-        { step: 6, name: "coverage", value: "" },
-        { step: 7, name: "start", value: "" }
-      ]
+      currentStep: 0
     };
   },
   components: {
     StartScreen,
-    InsuranceSteps,
+    InsuranceStepsScreen,
     Header,
     NavFooter
   },
@@ -55,9 +45,8 @@ export default defineComponent({
       this.started = !this.started;
       this.currentStep = 1;
     },
-    setStepData(obj: Step) {
-      alert(obj);
-      // this.stepData[obj.step - 1].value = obj.value;
+    updateStep(step: number) {
+      this.currentStep = step;
     }
   }
 });
@@ -75,25 +64,24 @@ export default defineComponent({
   font-size: 16px;
   box-sizing: border-box;
 }
+button:focus {
+  outline: none;
+}
 .pageslide-enter-active,
 .pageslide-leave-active {
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease 0.2s;
 }
-.pageslide-enter-from {
-  transform: translateY(0%);
-}
+.pageslide-enter-from,
 .pageslide-leave-to {
   transform: translateY(100%);
 }
 
 .navslide-enter-active,
 .navslide-leave-active {
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease 0.2s;
 }
-.navslide-enter-from {
-  transform: translateY(0%);
-}
+.navslide-enter-from,
 .navslide-leave-to {
-  transform: translateY(150vh);
+  transform: translateY(100%);
 }
 </style>

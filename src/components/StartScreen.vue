@@ -78,6 +78,10 @@ button {
   height: 3.125em;
   margin: 4.375em 0 3.75em;
 }
+button:focus {
+  background: #30c564;
+  box-shadow: none;
+}
 
 .signature {
   display: inline-flex;

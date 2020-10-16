@@ -1,11 +1,11 @@
 <template>
-  <li>
+  <div class="container">
     <img :src="icon" :alt="`${name} Insurance Logo`" />
     <span>
       <p class="name">{{ name }}</p>
       <p class="description">{{ description }}</p>
     </span>
-  </li>
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,7 +22,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-li {
+.container {
   background: #ffffff;
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
@@ -36,7 +36,7 @@ li {
   align-items: center;
   position: relative;
 }
-li + li {
+.container + .container {
   margin-top: 1.25em;
 }
 img {
