@@ -4,7 +4,7 @@
       <img class="header-icon" :alt="headerIconAltText" :src="headerIcon" />
       <span>{{ headerText }}</span>
     </span>
-    <button @click="() => {started ? clickHandler() : ''} ">
+    <button @click="started ? clickHandler() : ''">
       <img class="close-icon" :alt="closeIconAltText" :src="closeIcon" />
     </button>
   </div>
@@ -41,8 +41,11 @@ div {
   width: 100vw;
   justify-content: flex-start;
   align-items: center;
-  padding: 2.563em 1.875em 0;
+  padding: 2.563em 1.875em;
+  height: auto;
   top: 0;
+  background: #f9f9f9;
+  z-index: 999;
   right: 0;
   position: fixed;
 }

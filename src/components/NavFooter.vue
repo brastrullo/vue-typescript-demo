@@ -20,11 +20,6 @@ export default defineComponent({
   props: {
     currentStep: Number
   },
-  // computed: {
-  //   isPrevBtnDisabled() {
-  //     return 
-  //   },
-  // },
   data() {
     return {
       nextIcon: require("../assets/next.svg"),
@@ -43,7 +38,8 @@ footer {
   flex-flow: row nowrap;
   height: 3.75em;
   width: 100vw;
-  position: absolute;
+  position: fixed;
+  z-index: 999;
   bottom: 0;
   left: 0;
   background: #0074d9;

@@ -3,12 +3,11 @@
     <span class="main-icon">
       <img :alt="mainIconAltText" :src="mainIcon" />
     </span>
-    <div></div>
     <h1>{{ header }}</h1>
-    <List :list="list" />
+    <List />
     <button @click="clickHandler">{{ ctaText }}</button>
     <div class="signature">
-      <img :alt="signatureAltText" :src="signatureIcon" />
+      <img :alt="signatureIconAltText" :src="signatureIcon" />
       <span>{{ signatureText }}</span>
     </div>
   </section>
@@ -21,8 +20,7 @@ import List from "./IconTextList.vue";
 export default defineComponent({
   name: "StartScreen",
   props: {
-    clickHandler: Function,
-    msg: String
+    clickHandler: Function
   },
   components: {
     List
@@ -44,6 +42,8 @@ export default defineComponent({
 <style scoped>
 section {
   margin: 1.875em;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .main-icon {

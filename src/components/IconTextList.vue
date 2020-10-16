@@ -1,10 +1,10 @@
 <template>
   <ul>
-    <li v-for="item in list" :key="item.id" :n="item.id" :msg="item.msg">
+    <li v-for="item in list" :key="item.id" :n="item.id" :text="item.text">
       <i class="list-icon">
         <span>{{ item.id }}</span>
       </i>
-      <p>{{ item.msg }}</p>
+      <p>{{ item.text }}</p>
     </li>
   </ul>
 </template>
@@ -16,13 +16,13 @@ import { defineComponent } from "vue";
 //   name: "IconListItem",
 //   props: {
 //     n: Number,
-//     msg: String
+//     text: String
 //   },
 //   template: `<div>
 //     <i class="list-icon">
 //       <span>{{ n }}</span>
 //     </i>
-//     <p>{{ msg }}</p>
+//     <p>{{ text }}</p>
 //   </div>
 //   `
 // };
@@ -32,11 +32,11 @@ export default defineComponent({
   data() {
     return {
       list: [
-        { id: 1, msg: "Answer a few simple questions about your business" },
-        { id: 2, msg: "Browse through specially curated quotes" },
+        { id: 1, text: "Answer a few simple questions about your business" },
+        { id: 2, text: "Browse through specially curated quotes" },
         {
           id: 3,
-          msg: "Select your quote-of-choice and receive your policy instantly"
+          text: "Select your quote-of-choice and receive your policy instantly"
         }
       ]
     };
